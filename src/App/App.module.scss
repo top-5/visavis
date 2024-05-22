@@ -62,5 +62,42 @@ body,
 }
 
 .stats {
-    left: 80px !important;
+  left: 80px !important;
+}
+
+.bottom_drawer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.2) 60%);
+  z-index: 1000;
+  pointer-events: all;
+}
+
+.left_drawer {
+  position: absolute;
+  top: 50px;
+  left: 10px;
+  width: 10%;
+  height: 1080px;
+  background: transparent;
+  font-size: x-small;
+  z-index: 1000;
+  pointer-events: all;
+  // Limit height to 800px and add vertical scroll
+  overflow-y: auto;
+  // Make scrollbar style transparent, dark and thin
+  scrollbar-width: thin;
+  scrollbar-color: transparent #333;
+}
+
+// Add style to position div in the center
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
 }

@@ -4,6 +4,7 @@ import { Vector3, ACESFilmicToneMapping } from 'three';
 import { CameraProps } from 'src/types';
 import { hasWindow } from 'src/services/Client.service';
 import styles from './BaseCanvas.module.scss';
+import { Fog } from 'three';
 
 interface BaseCanvasProps extends CameraProps {
   children?: ReactNode;
@@ -32,6 +33,9 @@ export const BaseCanvas: FC<BaseCanvasProps> = ({
     camera={{ fov, position }}
     resize={{ scroll: true, debounce: { scroll: 50, resize: 0 } }}
     style={{ ...style, background: 'transparent' }}
+    onCreated={({ scene }) => {
+      scene.fog = new Fog('#0000b0', 2, 50); // Adjust color and depth values
+    }}
   >
     {children}
   </Canvas>

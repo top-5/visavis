@@ -4,10 +4,10 @@ on:
   push:
     branches:
       - main
-      - "feature/**"
-      - "feat/**"
-      - "hotfix/**"
-      - "ACT-**"
+      - 'feature/**'
+      - 'feat/**'
+      - 'hotfix/**'
+      - 'ACT-**'
 
 concurrency:
   group: ${{ github.ref }}

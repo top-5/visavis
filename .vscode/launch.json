@@ -1,0 +1,63 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Chrome (Attach)",
+      "port": 9222,
+      "request": "attach",
+      "type": "chrome",
+      "webRoot": "${workspaceFolder}",
+      "smartStep": true,
+      "outFiles": ["${workspaceFolder}/build/**/*.(m|c|)js", "!**/node_modules/**"],
+      "resolveSourceMapLocations": [
+        "${workspaceFolder}/src",
+        "${workspaceFolder}",
+        "!**/node_modules/**",
+        "!**/bower_components/**",
+        "!**/dist/**",
+        "!**/build/**"
+      ],
+      "sourceMaps": true,
+      "sourceMapPathOverrides": {
+        "./static/js/*": "${webRoot}/src/*",
+        "/static/js/*": "${webRoot}/src/*",
+        "webpack:///./*": "${webRoot}/*",
+        "webpack:///./src/*": "${webRoot}/src/*",
+        "webpack:///static/js/*": "${webRoot}/src/*",
+        "webpack:///./static/js/*": "${webRoot}/src/*"
+      }
+    },
+    {
+      "name": "Chrome (Launch)",
+      "windows": {
+        "runtimeExecutable": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
+      },
+      "includeLaunchArgs": true,
+      "request": "launch",
+      "runtimeExecutable": "stable",
+      "userDataDir": true,
+      "type": "chrome",
+      "includeDefaultArgs": true,
+      "url": "http://localhost:3000",
+      "cleanUp": "wholeBrowser",
+      "sourceMaps": true,
+      "webRoot": "${workspaceFolder}",
+      "preLaunchTask": "Start server"
+    },
+    {
+      "type": "node",
+      "request": "attach",
+      "name": "Attach to Node.js",
+      "env": {
+        "NODE_ENV": "development",
+        "PATH": "${env:PATH};C:/build/nwjs/nwjs-sdk-v0.85.0-win-x64"
+      },
+      "address": "127.0.0.1",
+      "port": 9222, // Ensure this matches the debug port used by your app
+      "localRoot": "${workspaceFolder}",
+      "remoteRoot": "${workspaceFolder}", // Adjust this path as necessary
+      "preLaunchTask": "Start server",
+      "skipFiles": ["<node_internals>/**"]
+    }
+  ]
+}

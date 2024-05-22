@@ -1,0 +1,49 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Stop previous instance",
+      "type": "shell",
+      "command": "taskkill /F /IM node.exe; exit 0",
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "Build client",
+      "type": "shell",
+      "command": "npm run build",
+      "group": "build",
+      "problemMatcher": ["$tsc"],
+      "dependsOn": ["Stop previous instance"]
+    },
+    {
+      "label": "Start server",
+      "type": "shell",
+      "command": "npm run start",
+      "group": "build",
+      "options": {
+        "env": {
+          "NODE_ENV": "development",
+          "PATH": "${env:PATH};C:/build/nwjs/nwjs-sdk-v0.85.0-win-x64"
+        }
+      },
+      "isBackground": true,
+      "problemMatcher": {
+        "pattern": [
+          {
+            "regexp": ".",
+            "file": 1,
+            "location": 2,
+            "message": 3
+          }
+        ],
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": ".",
+          "endsPattern": "."
+        }
+      },
+      "dependsOn": ["Build client"]
+    }
+  ]
+}

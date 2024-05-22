@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <script>
+      const constraints = {
+        video: true,
+        audio: true // Request audio capture
+      };
+
+      function handleSuccess(stream) {
+        document.querySelector('video').srcObject = stream;
+      }
+
+      function handleError(error) {
+        console.log('getDisplayMedia error: ', error);
+      }
+
+      function capture_video() {
+        navigator.mediaDevices.getDisplayMedia(constraints).then(handleSuccess).catch(handleError);
+      }
+    </script>
+  </head>
+
+  <body onload="capture_video()">
+    <video autoplay loop muted></video>
+  </body>
+</html>
